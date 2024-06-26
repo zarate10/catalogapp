@@ -10,5 +10,6 @@ También se le permitirá visualizar el detalle del producto.
 <hr>
 
 ### Screenshots
-<img src="https://i.imgur.com/qA68xAY.png" alt="Splash Screen" width="300" /><img src="https://i.imgur.com/6gyXXHX.png" alt="Login Screen" width="300" /><img src="https://i.imgur.com/BLX3pLQ.png" alt="Register Screen" width="300" /><img src="https://i.imgur.com/y934mRl.jpeg" alt="Catalog Screen" width="300" /><img src="https://i.imgur.com/eifXGkQ.jpeg" alt="Favs Screen" width="300" /><img src="https://i.imgur.com/wkzDpmQ.jpeg" alt="No Favs Screen" width="300" /><img src="https://i.imgur.com/azbXGwF.jpeg" alt="Detail Screen" width="300" />
+<img src="https://i.imgur.com/qA68xAY.png" alt="Splash Screen" width="300" />
+<img src="https://i.imgur.com/6gyXXHX.png" alt="Login Screen" width="300" /><img src="https://i.imgur.com/BLX3pLQ.png" alt="Register Screen" width="300" /><img src="https://i.imgur.com/y934mRl.jpeg" alt="Catalog Screen" width="300" /><img src="https://i.imgur.com/eifXGkQ.jpeg" alt="Favs Screen" width="300" /><img src="https://i.imgur.com/wkzDpmQ.jpeg" alt="No Favs Screen" width="300" /><img src="https://i.imgur.com/azbXGwF.jpeg" alt="Detail Screen" width="300" />
 
