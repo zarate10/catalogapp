@@ -26,13 +26,16 @@ private val TOKEN = "TOKEN_PRIVADO"
 ```
 
 ### Screenshots
+<p align="center">
 <img src="https://i.imgur.com/qA68xAY.png" alt="Splash Screen" width="220" /><img src="https://i.imgur.com/6gyXXHX.png" alt="Login Screen" width="220" /><img src="https://i.imgur.com/y934mRl.jpeg" alt="Catalog Screen" width="220" /><img src="https://i.imgur.com/eifXGkQ.jpeg" alt="Favs Screen" width="220" /><img src="https://i.imgur.com/wkzDpmQ.jpeg" alt="No Favs Screen" width="220" /><img src="https://i.imgur.com/azbXGwF.jpeg" alt="Detail Screen" width="220" />
-
+</p> 
 ### Preview app
 Preview | Especificación y descripción |
 --- | --- |
 <img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | **Splash** | 
-<img src="https://i.imgur.com/BWrLPcV.gif" alt="Login Screen" width="350" /> | **Registro y Login de Usuario** <br> Se hace uso de Google Firebase para la autenticación de un usuario. Esto permite almacenar dentro de Firestore los productos favoritos del ussuario. | 
+<img src="https://i.imgur.com/BWrLPcV.gif" alt="Login Screen" width="350" /> | **Registro y Login de Usuario** <br> Se hace uso de Google Firebase para el registro y autenticación de un usuario. Esto con el fin de relacionar un producto a un usuario y así obtener sus favoritos (en este caso, a través de su correo electrónico). | 
+<img src="https://i.imgur.com/mkEARZX.gif" alt="Catalog Screen" width="350" /> | **Pantalla de listado** <br> A través de Retrofit, la aplicación realiza peticiones HTTP a la API que provee MercadoLibre para obtener un listado de productos, como así tmabién los detalles respectivos de cada producto. | 
+<img src="https://i.imgur.com/Uhpgvsn.gif" alt="Search Screen" width="350" /> | **Búsqueda** <br> En la misma pantalla del listado se encuentra un input que permite modificar dicho listado a través de la búsqueda por nombre de productos, además de también, permitir ordenar la búsqueda por mayor o menor precio como se ve en el preview. |
 
 
 
