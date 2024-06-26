@@ -17,7 +17,7 @@ La aplicación está desarrollada con Kotlin en Android Studio.
 
 ### Uso 
 
-Para que la función arranque: 
+Para que la aplicación arranque: 
 1. Sincronizar las dependencias de Gradle una vez se monte el proyecto en Android Studio.
 2. Obtener un TOKEN para el consumo de la API de MercadoLibre. El mismo deberá reemplazar "TOKEN_PRIVADO" en MeliDataSource:
    
