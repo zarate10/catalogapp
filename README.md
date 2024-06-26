@@ -7,6 +7,11 @@ Una vez encuentre el producto que está buscando, podrá agregarlo a favoritos y
 
 También se le permitirá visualizar el detalle del producto. 
 
+La aplicación está desarrollada con Kotlin en Android Studio.
+
+**Patrón arquitectónico utilizado**: MVVM 
+**Patrones de diseño**: Singleton 
+
 <hr>
 
 ### Screenshots
