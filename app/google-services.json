@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1081051456524",
+    "project_id": "tpo-api-2024",
+    "storage_bucket": "tpo-api-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081051456524:android:aa0d1427026c6af38afa29",
+        "android_client_info": {
+          "package_name": "ar.edu.uade.tpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081051456524-e7t09vvkpee5svn4a0077kku7hjk3n1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ar.edu.uade.tpo",
+            "certificate_hash": "a12d5a8e0a565ea5b356679e9d9fc208aecda633"
+          }
+        },
+        {
+          "client_id": "1081051456524-l8ge931bq132ofg6lonog8f0mpbhnjr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzA3twT8a4w5pIthNK_zfIdG7bbfvSZZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081051456524-l8ge931bq132ofg6lonog8f0mpbhnjr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
