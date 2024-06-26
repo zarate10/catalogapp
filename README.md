@@ -31,6 +31,6 @@ private val TOKEN = "TOKEN_PRIVADO"
 ### Preview app
 Preview | Especificación y descripción |
 --- | --- |
-<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="220" /> | Splash | 
+<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | Splash | 
 
 
