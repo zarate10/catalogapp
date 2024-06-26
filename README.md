@@ -42,10 +42,10 @@ Para sincronizar la información se hace uso de hilos de ejecución paralelos qu
 
 <hr>
 
-<p align="right">**Lautaro Zarate** <br>
+**Lautaro Zarate** <br>
 Desarrollo de Aplicaciones, <br>
 Facultad de Ingeniería y Ciencias Exactas,<br>
-UADE.</p>
+UADE.
 
 
 
