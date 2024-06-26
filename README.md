@@ -14,6 +14,7 @@ La aplicación está desarrollada con Kotlin en Android Studio.
 [Código](https://github.com/zarate10/catalogapp/tree/main/app/src/main/java/ar/edu/uade/tpo) <br>
 
 <hr>
+
 ### Uso 
 
 Para que la función arranque: 
