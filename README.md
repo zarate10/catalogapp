@@ -31,6 +31,9 @@ private val TOKEN = "TOKEN_PRIVADO"
 ### Preview app
 Preview | Especificación y descripción |
 --- | --- |
-<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | Splash | 
+<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | **Splash** | 
+<img src="https://i.imgur.com/BWrLPcV.gif" alt="Login Screen" width="350" /> | **Registro y Login de Usuario** <br> Se hace uso de Google Firebase para la autenticación de un usuario. Esto permite almacenar dentro de Firestore los productos favoritos del ussuario. | 
+
+
 
 
