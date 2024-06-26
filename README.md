@@ -39,7 +39,7 @@ Preview | Especificación requerida y descripción |
 Para sincronizar la información se utilizan hilos de ejecución paralelos que eventualmente garantizan la consistencia de los datos. Además, se ha implementado el ciclo de vida de actividades (Activity Lifecycle) junto con sus respectivos callbacks para mantener la consistencia entre pantallas.
 
 ## API
-API https://api.mercadolibre.com/sites/MLA
+API https://api.mercadolibre.com/sites/MLA <br>
 $SORT = ‘price_asc’ | ‘price_desc’ | ‘relevance’
 
 <hr>
