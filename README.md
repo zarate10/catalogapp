@@ -9,7 +9,7 @@ También se le permitirá visualizar el detalle del producto.
 
 La aplicación está desarrollada con Kotlin en Android Studio.
 
-**Patrón arquitectónico utilizado**: MVVM 
+**Patrón arquitectónico utilizado**: MVVM<br>
 **Patrones de diseño**: Singleton 
 
 <hr>
