@@ -10,9 +10,20 @@ También se le permitirá visualizar el detalle del producto.
 La aplicación está desarrollada con Kotlin en Android Studio.
 
 **Patrón arquitectónico utilizado**: MVVM<br>
-**Patrones de diseño**: Singleton 
+**Patrones de diseño**: Singleton <br>
+[Código](https://github.com/zarate10/catalogapp/tree/main/app/src/main/java/ar/edu/uade/tpo) <br>
 
 <hr>
+### Uso 
+
+Para que la función arranque: 
+1. Sincronizar las dependencias de Gradle una vez se monte el proyecto en Android Studio.
+2. Obtener un TOKEN de autorización para el consumo de la API de MercadoLibre. El mismo deberá reemplazar "TOKEN_PRIVADO" en MeliDataSource:
+   
+```kotlin
+private val API_BASE_URL = "https://api.mercadolibre.com/"
+private val TOKEN = "TOKEN_PRIVADO"
+```
 
 ### Screenshots
 <img src="https://i.imgur.com/qA68xAY.png" alt="Splash Screen" width="220" /><img src="https://i.imgur.com/6gyXXHX.png" alt="Login Screen" width="220" /><img src="https://i.imgur.com/y934mRl.jpeg" alt="Catalog Screen" width="220" /><img src="https://i.imgur.com/eifXGkQ.jpeg" alt="Favs Screen" width="220" /><img src="https://i.imgur.com/wkzDpmQ.jpeg" alt="No Favs Screen" width="220" /><img src="https://i.imgur.com/azbXGwF.jpeg" alt="Detail Screen" width="220" />
