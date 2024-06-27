@@ -8,10 +8,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import ar.edu.uade.tpo.R
 import ar.edu.uade.tpo.ui.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: SplashViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,10 +26,14 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            var intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 4000)
+        viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
+
+        viewModel.isTokenLoaded.observe(this) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                var intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }, 1000)
+        }
     }
 }
