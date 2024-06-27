@@ -17,19 +17,37 @@ La aplicación está desarrollada con Kotlin en Android Studio.
 
 ## Uso 
 
-Para que la aplicación arranque: 
-1. Sincronizar las dependencias de Gradle una vez se monte el proyecto en Android Studio.
-2. Obtener un TOKEN para el consumo de la API de MercadoLibre. El mismo deberá reemplazar "TOKEN_PRIVADO" en MeliDataSource:
-   
+Pasos para arrancar la app: 
+1. Crear una aplicación en el `devcenter` de MercadoLibre. Dicha app proveerá un `client_id` (App ID) y un `client_secret`.
+2. Editar el scope de la aplicación de MercadoLibre para que admita lectura y acceso offline.
+3. Seguir la guía de [Autenticación y Autorización](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion/) de MercadoLibre para obtener un access_token (duración 6 hs) y un refresh_token (duración 6 meses).
+4. Rellenar los campos pertinentes con la información generada de forma anterior en MeliDataSource:
 ```kotlin
-private val API_BASE_URL = "https://api.mercadolibre.com/"
-private val TOKEN = "TOKEN_PRIVADO"
+// Data -> MeliDataSource
+        suspend fun refreshToken(): Token {
+            val api = Retrofit.Builder()
+                .baseUrl("https://api.mercadolibre.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(MeliAPI::class.java)
+
+                val tokenRequest = TokenRequest(
+                    grant_type = "refresh_token",
+                    client_id = "ACÁ AGREGAR CLIENT ID",
+                    client_secret = "ACÁ AGREGAR TOKEN SECRETO",
+                    refresh_token = "ACÁ AGREGAR REFRESH TOKEN"
+                )
+
+            return api.refreshToken(tokenRequest)
+        }
 ```
+5. Generar el certificado SHA-1 de la app.
+6. Sincronizar el certificado SHA-1 con Firebase para habilitar servicios como la autenticación y el almacenamiento en la nube.
+7. Abrir aplicación en Android Studio y sincronizar Gradle. 
 
 ## Preview app
 Preview | Especificación requerida y descripción |
 --- | --- |
-<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | **Splash** | 
+<img src="https://i.imgur.com/UMZ22l4.gif" alt="Splash Screen" width="350" /> | **Splash**<br>El splash ahora sirve para hacer una pausa hasta obtener el access_token de la API de MercadoLibre, en el momento de la obtención se esperará 1,5 s para pasar a la siguiente pantalla (HomeActivity) y se actualizará el TOKEN dentro de MeliDataSource, lo que permitirá acceder desde cualquier dispositivo a los detalles de los productos. | 
 <img src="https://i.imgur.com/BWrLPcV.gif" alt="Login Screen" width="350" /> | **Registro y Login de Usuario** <br> Se hace uso de Google Firebase para el registro y autenticación de un usuario. Se relaciona un producto a un usuario y así se obtienen sus favoritos (en este caso, a través de su correo electrónico). | 
 <img src="https://i.imgur.com/mkEARZX.gif" alt="Catalog Screen" width="350" /> | **Pantalla de listado** <br> A través de Retrofit, la aplicación realiza peticiones HTTP a la API que provee MercadoLibre para obtener un listado de productos, como así tmabién los detalles respectivos de cada producto. <br><br>**Endpoint/s**: <ul><br><li>GET `/sites/MLA/search?q=$STRING`</li></ul> | 
 <img src="https://i.imgur.com/Uhpgvsn.gif" alt="Search Screen" width="350" /> | **Búsqueda** <br> En la misma pantalla del listado se encuentra un input que permite modificar dicho listado a través de la búsqueda por nombre, además de también, permitir ordenar la búsqueda por mayor o menor precio según corresponda, tal como se visualiza en el preview.  <br><br>**Endpoint/s**: <ul><br><li>GET `/sites/MLA/search?q=$STRING`</li><li>GET `/sites/MLA/search?q=$STRING&sort=[price_asc OR price_desc]`</li></ul> |
