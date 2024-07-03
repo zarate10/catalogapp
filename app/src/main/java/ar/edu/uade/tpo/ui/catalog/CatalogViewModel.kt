@@ -115,7 +115,7 @@ class CatalogViewModel: ViewModel() {
             try {
                 syncFavorites(context, user)
                 getFavsCache()
-                search("auto", "price_desc")
+                search("NIKE", "relevance")
             } catch (e: Exception) {
                 Log.e("TPO-L0G", "(CatalogViewModel) Error init: $e")
             }

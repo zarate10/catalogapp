@@ -70,13 +70,14 @@ class MeliDataSource {
 
                 val tokenRequest = TokenRequest(
                     grant_type = "refresh_token",
-                    client_id = "ACÁ AGREGAR CLIENT ID",
-                    client_secret = "ACÁ AGREGAR TOKEN SECRETO",
-                    refresh_token = "ACÁ AGREGAR REFRESH TOKEN"
+                    client_id = "CLIENT_ID",
+                    client_secret = "DCLIENT_SECRET",
+                    refresh_token = "TOKEN"
                 )
 
             return api.refreshToken(tokenRequest)
         }
+
 
         fun updateToken(newToken: String) {
             this.TOKEN = newToken

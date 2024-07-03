@@ -1,6 +1,8 @@
 package ar.edu.uade.tpo.ui.favs
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.uade.tpo.R
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class FavsActivity : AppCompatActivity() {
 
@@ -21,6 +24,7 @@ class FavsActivity : AppCompatActivity() {
     private lateinit var rvFavs: RecyclerView
     private lateinit var adapter: FavsAdapter
     private lateinit var tvEmptyView: TextView
+    private lateinit var shimmer: ShimmerFrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,7 @@ class FavsActivity : AppCompatActivity() {
         user = intent.getStringExtra("USER").toString()
         viewModel.init(this, user)
 
+        shimmer = findViewById(R.id.shimmerFav)
         initRV()
         btnsNav()
     }
@@ -51,12 +56,20 @@ class FavsActivity : AppCompatActivity() {
             Log.i("TPO-LOG", "info: ${it.isEmpty()}")
             if (it.isEmpty()) {
                 rvFavs.visibility = View.GONE
+                shimmer.visibility = View.GONE
                 tvEmptyView.visibility = View.VISIBLE
             } else {
-                rvFavs.visibility = View.VISIBLE
                 tvEmptyView.visibility = View.GONE
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    shimmer.stopShimmer()
+                    shimmer.visibility = View.GONE
+                    rvFavs.visibility = View.VISIBLE
+                }, 1000)
+
             }
             adapter.update(it)
+
         }
     }
 

@@ -40,12 +40,26 @@
             android:textColor="@color/white"
             android:textSize="16dp" />
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFav"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <include layout="@layout/item_shimmer_fav" />
+                <include layout="@layout/item_shimmer_fav" />
+                <include layout="@layout/item_shimmer_fav" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavs"
             android:layout_width="match_parent"
             android:layout_height="616dp"
             android:layout_marginTop="10dp"
-            android:paddingHorizontal="10dp" />
+            android:paddingHorizontal="10dp"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView

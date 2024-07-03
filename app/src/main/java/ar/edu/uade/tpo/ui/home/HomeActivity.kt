@@ -83,9 +83,9 @@ class HomeActivity : AppCompatActivity() {
                 val email = firebaseUser.email
 
                 if (authResult.additionalUserInfo!!.isNewUser) {
-                    Toast.makeText(this, "Cuenta creada...", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Cuenta creada", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this, "Cuenta existente...", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
                 }
 
                 startActivity(Intent(this, CatalogActivity::class.java))

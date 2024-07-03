@@ -2,8 +2,10 @@ package ar.edu.uade.tpo.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import ar.edu.uade.tpo.R
 import ar.edu.uade.tpo.ui.favs.FavsActivity
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
@@ -28,7 +31,9 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var tvDetailDescription: TextView
     private lateinit var tvDetailPrice: TextView
     private lateinit var btnAddFav: Button
-
+    private lateinit var shimmer: ShimmerFrameLayout
+    private lateinit var layoutDetailTop: LinearLayout
+    private lateinit var layoutDetailBottom: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +70,9 @@ class DetailActivity : AppCompatActivity() {
         tvDetailImage = findViewById(R.id.tvDetailImage)
         tvDetailPrice = findViewById(R.id.tvDetailPrice)
         btnAddFav = findViewById(R.id.btnAddFav)
+        shimmer = findViewById(R.id.shimmerDetail)
+        layoutDetailTop = findViewById(R.id.layoutDetailTop)
+        layoutDetailBottom = findViewById(R.id.layoutDetailBottom)
 
         viewModel.textBtnFav.observe(this) {
             btnAddFav.setText(it)
@@ -76,25 +84,28 @@ class DetailActivity : AppCompatActivity() {
     private fun initListeners() {
         btnAddFav.setOnClickListener {
             viewModel.addRemoveFav()
-
         }
     }
 
     private fun bindVM() {
         viewModel.description.observe(this) {
             tvDetailDescription.setText(it)
+            checkDataLoaded()
         }
 
         viewModel.title.observe(this) {
             tvDetailName.setText(it)
+            checkDataLoaded()
         }
 
         viewModel.condition.observe(this) {
             tvDetailCondition.setText(it)
+            checkDataLoaded()
         }
 
         viewModel.price.observe(this) {
             tvDetailPrice.setText("$" + it)
+            checkDataLoaded()
         }
 
         viewModel.imageUrl.observe(this) {
@@ -104,6 +115,7 @@ class DetailActivity : AppCompatActivity() {
                     .placeholder(R.drawable.app_splash)
                     .error(R.drawable.app_splash)
                     .into(tvDetailImage)
+                checkDataLoaded()
             }
         }
     }
@@ -126,6 +138,19 @@ class DetailActivity : AppCompatActivity() {
 
         btnLogout.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun checkDataLoaded() {
+        if (viewModel.description.value != null &&
+            viewModel.title.value != null &&
+            viewModel.condition.value != null &&
+            viewModel.price.value != null &&
+            viewModel.imageUrl.value != null) {
+            shimmer.stopShimmer()
+            shimmer.visibility = View.GONE
+            layoutDetailTop.visibility = View.VISIBLE
+            layoutDetailBottom.visibility = View.VISIBLE
         }
     }
 

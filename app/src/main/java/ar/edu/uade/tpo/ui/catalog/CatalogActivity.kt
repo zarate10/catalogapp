@@ -1,9 +1,11 @@
 package ar.edu.uade.tpo.ui.catalog
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.Button
@@ -21,6 +23,7 @@ import ar.edu.uade.tpo.R
 import ar.edu.uade.tpo.ui.favs.FavsActivity
 import ar.edu.uade.tpo.ui.home.HomeActivity
 import ar.edu.uade.tpo.ui.login.LoginActivity
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.auth.FirebaseAuth
 
 class CatalogActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.OnQueryTextListener, OnItemClickListener {
@@ -35,6 +38,7 @@ class CatalogActivity : AppCompatActivity(), androidx.appcompat.widget.SearchVie
     private lateinit var inputSearchProducts: androidx.appcompat.widget.SearchView
     private lateinit var btnOrderByMaxPrice: Button
     private lateinit var btnOrderByMinPrice: Button
+    private lateinit var shimmerCatalog: ShimmerFrameLayout
 
     private lateinit var tvSaludoUser: TextView
 
@@ -71,6 +75,8 @@ class CatalogActivity : AppCompatActivity(), androidx.appcompat.widget.SearchVie
         btnOrderByMaxPrice = findViewById(R.id.btnOrderByMaxPrice)
         btnOrderByMinPrice = findViewById(R.id.btnOrderByMinPrice)
 
+        shimmerCatalog = findViewById(R.id.shimmerCatalog)
+
         viewModel = ViewModelProvider(this)[CatalogViewModel::class.java]
         viewModel.init(this, firebaseAuth.currentUser!!.email!!)
 
@@ -92,6 +98,9 @@ class CatalogActivity : AppCompatActivity(), androidx.appcompat.widget.SearchVie
 
         viewModel.productsOfSearch.observe(this) {
             adapter.update(it)
+            shimmerCatalog.stopShimmer()
+            shimmerCatalog.visibility = View.GONE
+            rvProducts.visibility = View.VISIBLE
         }
     }
 
@@ -126,6 +135,11 @@ class CatalogActivity : AppCompatActivity(), androidx.appcompat.widget.SearchVie
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (!query.isNullOrEmpty()) {
             viewModel.searchProductsByName(query)
+            shimmerCatalog.visibility = View.VISIBLE
+            rvProducts.visibility = View.GONE
+            /* cerrar teclado al enviar el input */
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
         return true
     }
